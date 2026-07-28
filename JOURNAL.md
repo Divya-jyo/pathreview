@@ -14,3 +14,17 @@ The test `test_readme_with_all_quality_signals` in `tests/unit/test_readme_score
 **Setup confirmation:** [ ] App runs locally at localhost:5173 (backend setup complete — Docker services running, Python deps installed, DB migrated and seeded successfully; frontend `npm install` step still pending, as Node.js/npm is not yet installed on this machine)
 
 **Cohort ledger:** [x] Issue added to cohort ledger
+
+## Week 8 — Reproduction & solution planning
+
+**Reproduction commit link:** (placeholder — will update after push)
+
+**Reproduction summary:**
+Ran `pytest tests/unit/test_readme_scorer.py -q` in the activated venv and confirmed the failure described in the issue: `test_readme_with_all_quality_signals` fails with `assert 51 > 100`. The test's captured output shows the fixture README scores `word_count=51`, `category=minimal`, `score=0.87`. The scorer is working correctly — it's the test's fixture data that doesn't meet the word-count threshold it asserts.
+
+**PLAN.md link:** (placeholder — will update after push)
+
+**Walkthrough video (recommended):** Skipped — not part of the grade.
+
+**Blockers or open questions:**
+Frontend `npm install` still pending (Node.js not yet installed) — not required for this backend-only fix, but noting for full local app verification later.
