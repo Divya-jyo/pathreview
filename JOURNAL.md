@@ -17,12 +17,12 @@ The test `test_readme_with_all_quality_signals` in `tests/unit/test_readme_score
 
 ## Week 8 — Reproduction & solution planning
 
-**Reproduction commit link:** (placeholder — will update after push)
+**Reproduction commit link:** https://github.com/Divya-jyo/pathreview/commit/526e31f
 
 **Reproduction summary:**
 Ran `pytest tests/unit/test_readme_scorer.py -q` in the activated venv and confirmed the failure described in the issue: `test_readme_with_all_quality_signals` fails with `assert 51 > 100`. The test's captured output shows the fixture README scores `word_count=51`, `category=minimal`, `score=0.87`. The scorer is working correctly — it's the test's fixture data that doesn't meet the word-count threshold it asserts.
 
-**PLAN.md link:** (placeholder — will update after push)
+**PLAN.md link:** https://github.com/Divya-jyo/pathreview/blob/fix/156-readme-scorer-fixture-length/PLAN.md
 
 **Walkthrough video (recommended):** Skipped — not part of the grade.
 
