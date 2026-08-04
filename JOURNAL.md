@@ -44,3 +44,18 @@ Open a draft PR for review, request peer/mentor feedback in Slack.
 
 **Blockers:**
 None currently. Frontend `npm install` still pending (Node.js not installed), not required for this fix.
+### Check-in 2 (end of week)
+
+**PR link:** https://github.com/Divya-jyo/pathreview/pull/1
+
+**Branch:** fix/156-readme-scorer-fixture-length
+
+**What you built:**
+Extended the fixture README in `test_readme_with_all_quality_signals` from ~51 words to 500+ words so it correctly clears the "comprehensive" word-count threshold (500 words) defined in `agent/tools/readme_scorer.py`. No production code was changed — the scorer logic was already correct; only the test's sample data was insufficient.
+
+**Tests added or updated:**
+Updated the fixture in `tests/unit/test_readme_scorer.py` (no new test functions — existing test now passes with corrected sample data). All 23 tests in this file pass.
+
+**Self-review confirmation:** [x] make check passes (with documented pre-existing mypy gap, unrelated to this change) [x] make test-unit passes (with documented pre-existing failures in other files, unrelated to this change)
+
+**Draft PR feedback received from:** none yet — pending peer/mentor review
