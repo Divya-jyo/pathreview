@@ -58,4 +58,4 @@ Updated the fixture in `tests/unit/test_readme_scorer.py` (no new test functions
 
 **Self-review confirmation:** [x] make check passes (with documented pre-existing mypy gap, unrelated to this change) [x] make test-unit passes (with documented pre-existing failures in other files, unrelated to this change)
 
-**Draft PR feedback received from:** none yet — pending peer/mentor review
+**Draft PR feedback received from:** none — posted in Slack,no response received by deadline
