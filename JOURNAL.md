@@ -59,3 +59,34 @@ Updated the fixture in `tests/unit/test_readme_scorer.py` (no new test functions
 **Self-review confirmation:** [x] make check passes (with documented pre-existing mypy gap, unrelated to this change) [x] make test-unit passes (with documented pre-existing failures in other files, unrelated to this change)
 
 **Draft PR feedback received from:** none — posted in Slack,no response received by deadline
+
+## Week 10 — Iteration & reflection
+
+### Reviewer feedback
+
+**Feedback received:** [ ] Yes  [x] No — still awaiting review
+
+**Summary of feedback:**
+No feedback was received. I posted my draft PR in the course Slack channel requesting review, but no reviewer or peer responded by the submission deadline. Per Su26 course notes, reviewer feedback was not an active feature this term.
+
+**How you responded:**
+N/A — no feedback was received to respond to.
+
+---
+
+### Reflection
+
+**What was harder than you expected?**
+Environment setup took far longer than I expected, and it happened before I even touched the actual issue. Docker Desktop repeatedly failed mid-download with connection drops across two different networks (home Wi-Fi and a phone hotspot), which took real troubleshooting to isolate — it turned out to be a Docker Desktop container-store setting, not a network problem, even though the symptoms looked exactly like one. Separately, `make` and `npm` weren't installed on my Windows machine at all, so I had to install Chocolatey from scratch just to get `make` working. None of this was related to my actual issue, but it consumed most of my available time in Week 7.
+
+**What did you learn about working in a large codebase?**
+I learned that a fix that looks simple from the issue title can still require real investigation. My issue's assertion (`word_count > 100`) implied a threshold of 100 words, but when I extended my fixture to just over 100 words, the test still failed — because the actual "comprehensive" category threshold in the scoring logic was 500 words, not 100. I only found this by searching the actual source file (`readme_scorer.py`) instead of trusting the test's naming. I also learned that a codebase can have many pre-existing failures (52 failing tests, 24 missing type annotations) that are completely unrelated to your change, and that documenting this honestly — rather than trying to fix everything or hide it — is the expected, professional approach.
+
+**How did AI tools help — and where did they fall short?**
+AI helped most with troubleshooting unfamiliar tooling errors (Docker registry failures, PowerShell vs. Git Bash syntax differences, pre-commit hook behavior) and with drafting structured documentation like PLAN.md and PR descriptions. It fell short when I pasted multi-line code blocks manually, since indentation broke silently and caused confusing Python errors (a function's code was accidentally read as class-level code) — I had to carefully compare line-by-line with the actual file content to catch it, since the error message didn't directly point to "indentation is wrong."
+
+**What would you do differently if you started over?**
+I would install Node.js, `make`, and confirm Docker was fully working *before* selecting an issue, rather than discovering these gaps mid-task. I'd also check an issue's GitHub comment thread for existing claim activity before committing to it, since my first two candidate issues (#156 and #89) turned out to already have dozens of claim comments and linked PRs — though I later learned claims aren't exclusive in this course, so this mattered less than I initially thought.
+
+**What are you most proud of from this module?**
+Getting the environment fully working despite three separate blocking issues (Docker networking, missing `make`, missing `npm`) without giving up or skipping the actual assignment. I'm also proud that I caught the real 500-word threshold by reading the actual source code, rather than assuming the number in the test's own assertion was the true threshold.
