@@ -17,37 +17,105 @@ class TestReadmeScorer:
     def test_readme_with_all_quality_signals(self, scorer):
         """Test README with all quality signals returns high score."""
         readme = """
-        # Project Name
-        A comprehensive project description.
+# Project Name
+A comprehensive project management tool designed to help small teams
+track tasks, manage deadlines, and collaborate effectively across
+distributed environments. This project was built to solve the common
+problem of scattered task tracking across multiple disconnected tools,
+bringing everything into a single, unified workspace that scales from
+small startups to larger engineering organizations.
 
-        ## Installation
-        ```bash
-        pip install package
-        ```
+## Installation
+```bash
+pip install package
+```
+Installation is straightforward and requires only a single command.
+The package supports Python 3.9 and above, and has been tested
+extensively across Linux, macOS, and Windows environments.
 
-        ## Usage
-        ```python
-        import package
-        package.run()
-        ```
+## Usage
+```python
+import package
+package.run()
+```
+Once installed, getting started takes just a few lines of code. The
+library exposes a simple, intuitive API that allows developers to
+initialize a new project and begin tracking tasks within minutes.
 
-        ## Features
-        - Feature 1
-        - Feature 2
-        - Feature 3
+## Features
+- Feature 1: Real-time task synchronization across all connected
+  clients, ensuring every team member sees updates instantly.
+- Feature 2: Automated deadline reminders sent via email and Slack,
+  configurable per project or per user preference.
+- Feature 3: Detailed analytics dashboard showing team velocity and
+  task completion rates over time.
+- Feature 4: Role-based access control allowing project owners to
+  define granular permissions across team members.
 
-        ## Tech Stack
-        - Python 3.9
-        - FastAPI
-        - PostgreSQL
+## Tech Stack
+- Python 3.9
+- FastAPI
+- PostgreSQL
+- Redis for caching and background job queues
+- Docker for containerized deployment across environments
 
-        ![Build Status](https://example.com/badge.svg)
-        ![Coverage](https://example.com/coverage.svg)
+![Build Status](https://example.com/badge.svg)
+![Coverage](https://example.com/coverage.svg)
 
-        ## Live Demo
-        [Try it here](https://demo.example.com)
-        """
+## Live Demo
+[Try it here](https://demo.example.com)
 
+## Contributing
+Contributions are welcome and encouraged. Please read our contributing
+guidelines before submitting a pull request, and ensure all new code
+is covered by appropriate unit tests.
+
+## Support
+If you encounter any issues while using this project, please open an
+issue on our GitHub repository with a detailed description of the
+problem, including steps to reproduce it and your operating system.
+Our maintainers actively monitor the issue tracker.
+
+## License
+This project is licensed under the MIT License, which permits reuse,
+modification, and distribution of the software for both personal and
+commercial purposes.
+
+## Acknowledgements
+Special thanks to all the open source contributors who have helped
+shape this project through bug reports, feature suggestions, and
+documentation improvements.
+
+## Roadmap
+Looking ahead, we plan to introduce additional integrations with
+popular calendar and messaging platforms, expand our reporting
+capabilities, and improve performance for teams managing large
+numbers of tasks simultaneously.
+## FAQ
+**Does this work with Python 2?**
+No, this project requires Python 3.9 or later and does not support
+legacy Python 2 environments.
+
+**Can I use this in a commercial product?**
+Yes, the MIT License permits commercial use, provided the license
+terms are included with any distribution of the software.
+
+**How do I report a security vulnerability?**
+Please do not open a public issue for security concerns. Instead,
+email our security team directly so we can address the problem
+before public disclosure.
+
+**Is there a hosted version available?**
+Yes, a hosted version is available for teams who prefer not to
+manage their own infrastructure. See our pricing page for details
+on available plans and features.
+
+## Changelog
+Version 2.0 introduced real-time synchronization and the analytics
+dashboard. Version 1.5 added Slack integration and configurable
+reminders. Version 1.0 was our initial public release, focused on
+core task tracking functionality for small teams.
+"""
         result = scorer.execute({"readme_content": readme})
 
         assert result.success is True
@@ -157,9 +225,10 @@ class TestReadmeScorer:
 
         result = scorer.execute({"readme_content": readme})
         # "Getting Started" matches the pattern
-        assert result.data["has_installation_section"] is True or result.data[
-            "has_usage_section"
-        ] is True
+        assert (
+            result.data["has_installation_section"] is True
+            or result.data["has_usage_section"] is True
+        )
 
     def test_quickstart_counts_as_usage(self, scorer):
         """Test that 'quickstart' counts as usage."""
@@ -218,7 +287,8 @@ class TestReadmeScorer:
 
     def test_overall_score_calculation(self, scorer):
         """Test that overall score aggregates components."""
-        readme = """
+        readme = (
+            """
         # Good README
 
         ## Installation
@@ -233,7 +303,9 @@ class TestReadmeScorer:
         ![Build](https://example.com/build.svg)
 
         This readme has lots of content here.
-        """ * 3  # Make it comprehensive
+        """
+            * 3
+        )  # Make it comprehensive
 
         result = scorer.execute({"readme_content": readme})
 
